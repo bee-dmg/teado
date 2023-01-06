@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins="http://localhost:8081")
 @RestController
@@ -39,11 +40,24 @@ public class TicketController {
     }
     @GetMapping("/tickets/{id}")
     public ResponseEntity<Ticket> getTicketById(@PathVariable("id") long id){
-        
+        Optional<Ticket> ticketData = ticketRepository.findById(id);
+
+        if(ticketData.isPresent()) {
+            return new ResponseEntity<>(ticketData.get(), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        }
+
     }
     @PostMapping("/tickets")
-    public ResponseEntity<Ticket> createTicket(@RequestBody Ticket ticket){
-
+    public ResponseEntity<Ticket> createTicket(@RequestBody Ticket ticket){    //public Ticket(String title, String name, String email, String description)
+        try{
+            Ticket _ticket = ticketRepository.save(new Ticket(ticket.getTitle(),ticket.getName(),ticket.getEmail(),ticket.getDescription()));
+            return new ResponseEntity<>(_ticket,HttpStatus.CREATED);
+        } catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/tickets/{id}")
