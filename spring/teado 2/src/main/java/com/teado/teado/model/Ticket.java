@@ -36,4 +36,45 @@ public class Ticket {
         this.description=description;
 
     }
+
+    public long getId() {
+        return id;
+    }
+
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString(){
+        return "Ticket [id="+ id + ", title="+title+", desc="+description+", email="+email+", name="+name;
+    }
 }
