@@ -27,7 +27,7 @@ public class TicketController {
             if (title == null) {
                 ticketRepository.findAll().forEach(tickets::add);
             } else {
-                ticketRepository.findByTitleContaining(title).forEach(tutorials:add);
+                ticketRepository.findByTitleContaining(title).forEach(tickets::add);
             }
 
             if (tickets.isEmpty()) {
@@ -49,7 +49,7 @@ public class TicketController {
         }
         }
 
-    }
+
     @PostMapping("/tickets")
     public ResponseEntity<Ticket> createTicket(@RequestBody Ticket ticket){    //public Ticket(String title, String name, String email, String description)
         try{
@@ -69,7 +69,9 @@ public class TicketController {
             _ticket.setTitle(ticket.getTitle());
             _ticket.setDescription(ticket.getDescription());
             _ticket.setName(ticket.getName());
-
+            return new ResponseEntity<>(ticketRepository.save(_ticket), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     @DeleteMapping("/tickets/{id}")
