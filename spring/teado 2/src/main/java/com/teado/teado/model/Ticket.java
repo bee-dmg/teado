@@ -4,8 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.*;
-
-
+import com.teado.teado.types.Status;
 
 @Entity
 @Table(name = "tickets")
@@ -26,6 +25,9 @@ public class Ticket {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "status")
+    private Status status;
+
     public Ticket(){
 
     }
@@ -33,6 +35,7 @@ public class Ticket {
         this.title =title;
         this.name=name;
         this.email=email;
+        this.status = Status.OPEN;
         this.description=description;
 
     }
@@ -63,7 +66,17 @@ public class Ticket {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public String getDescription() {
         return description;

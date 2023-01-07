@@ -1,6 +1,7 @@
 package com.teado.teado.controller;
 
 
+
 import com.teado.teado.model.Ticket;
 import com.teado.teado.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+import com.teado.teado.types.Status;
 @CrossOrigin(origins="http://localhost:8081")
 @RestController
 @RequestMapping("/api")
@@ -69,6 +70,13 @@ public class TicketController {
             _ticket.setTitle(ticket.getTitle());
             _ticket.setDescription(ticket.getDescription());
             _ticket.setName(ticket.getName());
+            _ticket.setEmail(ticket.getEmail());
+            if(ticket.getStatus()==null){
+                _ticket.setStatus(Status.OPEN);
+            }else{
+                _ticket.setStatus(ticket.getStatus());
+            }
+            
             return new ResponseEntity<>(ticketRepository.save(_ticket), HttpStatus.OK);
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
