@@ -1,14 +1,11 @@
 package com.teado.teado.controller;
 
-
-
 import com.teado.teado.model.Ticket;
 import com.teado.teado.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -76,7 +73,7 @@ public class TicketController {
             }else{
                 _ticket.setStatus(ticket.getStatus());
             }
-            
+
             return new ResponseEntity<>(ticketRepository.save(_ticket), HttpStatus.OK);
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
