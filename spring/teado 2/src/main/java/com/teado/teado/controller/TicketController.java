@@ -51,7 +51,7 @@ public class TicketController {
     @PostMapping("/tickets")
     public ResponseEntity<Ticket> createTicket(@RequestBody Ticket ticket){    //public Ticket(String title, String name, String email, String description)
         try{
-            Ticket _ticket = ticketRepository.save(new Ticket(ticket.getTitle(),ticket.getName(),ticket.getEmail(),ticket.getDescription()));
+            Ticket _ticket = ticketRepository.save(new Ticket(ticket.getTitle(),ticket.getReporter(),ticket.getEmail(),ticket.getDescription(), ticket.getDate(), ticket.getKey(),ticket.getTicketNumber()));
             return new ResponseEntity<>(_ticket,HttpStatus.CREATED);
         } catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -66,7 +66,7 @@ public class TicketController {
             Ticket _ticket = ticketData.get();
             _ticket.setTitle(ticket.getTitle());
             _ticket.setDescription(ticket.getDescription());
-            _ticket.setName(ticket.getName());
+            _ticket.setReporter(ticket.getReporter());
             _ticket.setEmail(ticket.getEmail());
             if(ticket.getStatus()==null){
                 _ticket.setStatus(Status.OPEN);

@@ -16,8 +16,8 @@ public class Ticket {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "reporter")
+    private String reporter;
 
     @Column(name = "email")
     private String email;
@@ -28,15 +28,32 @@ public class Ticket {
     @Column(name = "status")
     private Status status;
 
+    @Column(name = "date")
+    private String date;
+
+
+    @Column(name = "keyvalue")
+    private String key;
+
+
+
+    @Column(name = "ticket_number")
+    private String ticketNumber;
+
+
+
     public Ticket(){
 
     }
-    public Ticket(String title, String name, String email, String description){
+    public Ticket(String title, String reporter, String email, String description, String date, String key, String ticketNumber){
         this.title =title;
-        this.name=name;
+        this.reporter=reporter;
         this.email=email;
         this.status = Status.OPEN;
         this.description=description;
+        this.date = date;
+        this.key = key;
+        this.ticketNumber = ticketNumber;
 
     }
 
@@ -44,7 +61,29 @@ public class Ticket {
         return id;
     }
 
+    public String getKey() {
+        return key;
+    }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getTicketNumber() {
+        return ticketNumber;
+    }
+
+    public void setTicketNumber(String ticketNumber) {
+        this.ticketNumber = ticketNumber;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String getTitle() {
         return title;
@@ -54,12 +93,12 @@ public class Ticket {
         this.title = title;
     }
 
-    public String getName() {
-        return name;
+    public String getReporter() {
+        return reporter;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setReporter(String reporter) {
+        this.reporter = reporter;
     }
 
     public String getEmail() {
@@ -88,6 +127,6 @@ public class Ticket {
 
     @Override
     public String toString(){
-        return "Ticket [id="+ id + ", title="+title+", desc="+description+", email="+email+", name="+name;
+        return "Ticket [id="+ id + ", title="+title+", desc="+description+", email="+email+", reporter="+reporter+", date="+date+", key="+key+", ticketNumber="+ticketNumber;
     }
 }
