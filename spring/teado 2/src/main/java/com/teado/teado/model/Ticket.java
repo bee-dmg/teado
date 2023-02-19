@@ -6,6 +6,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.*;
 import com.teado.teado.types.Status;
 
+import java.util.ArrayList;
+
 @Entity
 @Table(name = "tickets")
 public class Ticket {
@@ -39,7 +41,6 @@ public class Ticket {
 
     @Column(name = "ticket_number")
     private String ticketNumber;
-
 
 
     public Ticket(){
