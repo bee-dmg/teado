@@ -11,4 +11,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Long>{
     List<Ticket> findById(int id);
 
     Optional<Ticket> findByTicketNumber(String ticketNumber);
+
+
 }
