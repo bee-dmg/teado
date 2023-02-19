@@ -59,8 +59,8 @@ public class TicketController {
     }
 
     @PutMapping("/tickets/{id}")
-    public ResponseEntity<Ticket> updateTicket(@PathVariable("id") long id, @RequestBody Ticket ticket){
-        Optional<Ticket> ticketData = ticketRepository.findById(id);
+    public ResponseEntity<Ticket> updateTicket(@PathVariable("id") String id, @RequestBody Ticket ticket){
+        Optional<Ticket> ticketData = ticketRepository.findByTicketNumber(id);
         //public Ticket(String title, String name, String email, String description)
         if(ticketData.isPresent()){
             Ticket _ticket = ticketData.get();
