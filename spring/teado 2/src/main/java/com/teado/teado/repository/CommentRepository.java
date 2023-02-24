@@ -8,7 +8,7 @@ import com.teado.teado.model.Comment;
 
 public interface CommentRepository extends JpaRepository<Comment, Long>{
     List<Comment> findByTitleContaining(String title);
-    List<Comment> findById(int id);
+    List<Comment> findById(String id);
 
     Optional<Comment> findByTicketNumber(String ticketNumber);
 

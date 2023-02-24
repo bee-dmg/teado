@@ -10,6 +10,21 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "comments")
 public class Comment {
+
+
+    public Comment() {
+    }
+
+    public Comment(String title, String user, String comment, String date, String ticketNumber){
+        this.title =title;
+        this.user=user;
+        this.comment=comment;
+        this.date = date;
+        this.ticketNumber = ticketNumber;
+
+    }
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -21,13 +36,24 @@ public class Comment {
     private String ticketNumber;
 
 
+    public String getTicketNumber() {
+        return ticketNumber;
+    }
+
+    public void setTicketNumber(String ticketNumber) {
+        this.ticketNumber = ticketNumber;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     @Column(name = "title")
     private String title;
     @Column(name = "user")
     private String user;
-    @Column(name = "time")
-    private String time;
+    @Column(name = "date")
+    private String date;
 
 
 
@@ -49,12 +75,12 @@ public class Comment {
         this.user = user;
     }
 
-    public String getTime() {
-        return time;
+    public String getDate() {
+        return date;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void Date(String date) {
+        this.date = date;
     }
 
 
@@ -66,4 +92,7 @@ public class Comment {
         this.title = title;
     }
 
+    public boolean isPresent() {
+       return true;
+    }
 }
