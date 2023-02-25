@@ -37,7 +37,16 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    public String getKeyValue() {
+        return keyValue;
+    }
 
+    public void setKeyValue(String keyValue) {
+        this.keyValue = keyValue;
+    }
+
+    @Column(name = "keyValue")
+    private String keyValue;
     @Column(name = "comment")
     private String comment;
     @Column(name = "ticketNumber")
