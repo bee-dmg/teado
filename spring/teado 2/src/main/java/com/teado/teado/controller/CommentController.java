@@ -51,7 +51,7 @@ public class CommentController {
     @PostMapping("/comments")
     public ResponseEntity<Comment> createComment(@RequestBody Comment comment){    //public Ticket(String title, String name, String email, String description)
         try{
-            Comment _comment = commentRepository.save(new Comment(comment.getTitle(),comment.getUser(),comment.getComment(),comment.getDate(),comment.getTicketNumber()));
+            Comment _comment = commentRepository.save(new Comment(comment.getTitle(),comment.getUser(),comment.getComment(),comment.getDate(),comment.getTicketNumber(),comment.getKeyValue()));
             return new ResponseEntity<>(_comment,HttpStatus.CREATED);
         } catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
