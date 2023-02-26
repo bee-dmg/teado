@@ -13,4 +13,5 @@ public interface CommentRepository extends JpaRepository<Comment, Long>{
     Optional<Comment> findByTicketNumber(String ticketNumber);
 
 
+    List<Comment> findByKeyValue(String id);
 }

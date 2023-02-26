@@ -60,8 +60,7 @@ public class CommentController {
 
     @PutMapping("/comments/{id}")
     public ResponseEntity<Comment> updateComment(@PathVariable("id") String id, @RequestBody Comment comment){
-        List<Comment> commentData = commentRepository.findById(id);
-        //public Ticket(String title, String name, String email, String description)
+        List<Comment> commentData = commentRepository.findByKeyValue(id);
         if(commentData.get(0).isPresent()){
             Comment _comment = commentData.get(0);
             _comment.setTitle(comment.getTitle());
