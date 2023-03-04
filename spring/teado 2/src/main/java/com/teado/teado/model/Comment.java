@@ -15,12 +15,13 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String title, String user, String comment, String date, String ticketNumber){
+    public Comment(String title, String user, String comment, String date, String ticketNumber, String keyValue){
         this.title =title;
         this.user=user;
         this.comment=comment;
         this.date = date;
         this.ticketNumber = ticketNumber;
+        this.keyValue=keyValue;
 
     }
 

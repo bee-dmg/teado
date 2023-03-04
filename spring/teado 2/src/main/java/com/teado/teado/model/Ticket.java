@@ -42,11 +42,23 @@ public class Ticket {
     @Column(name = "ticket_number")
     private String ticketNumber;
 
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    @Column(name = "project_name")
+    private String projectName;
+
+
 
     public Ticket(){
 
     }
-    public Ticket(String title, String reporter, String email, String description, String date, String key, String ticketNumber){
+    public Ticket(String title, String reporter, String email, String description, String date, String key, String ticketNumber, String projectName){
         this.title =title;
         this.reporter=reporter;
         this.email=email;
@@ -55,6 +67,7 @@ public class Ticket {
         this.date = date;
         this.key = key;
         this.ticketNumber = ticketNumber;
+        this.projectName=projectName;
 
     }
 
